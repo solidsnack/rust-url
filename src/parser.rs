@@ -756,12 +756,13 @@ impl<'a> Parser<'a> {
             end = input.len();
             while let Some((i, c, next_i)) = iter.next() {
                 match c {
-                    '/' => {
+                    '/' if self.context != Context::PathSegmentSetter => {
                         ends_with_slash = true;
                         end = i;
                         break
                     },
-                    '\\' if scheme_type.is_special() => {
+                    '\\' if self.context != Context::PathSegmentSetter &&
+                            scheme_type.is_special() => {
                         self.syntax_violation("backslash");
                         ends_with_slash = true;
                         end = i;

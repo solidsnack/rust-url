@@ -474,6 +474,11 @@ impl Url {
         }
     }
 
+    /// Change this URL’s path.
+    pub fn set_path(&mut self, path: &str) {
+        unimplemented!()
+    }
+
     /// Remove the last segment of this URL’s path.
     ///
     /// If this URL is non-relative, do nothing and return `Err`.
@@ -669,6 +674,20 @@ impl Url {
 
         self.set_host_internal(Host::Ipv6(address));
         Ok(())
+    }
+
+    /// Change this URL’s password.
+    ///
+    /// If this URL is non-relative or does not have a host, do nothing and return `Err`.
+    pub fn set_password(&mut self, password: Option<&str>) -> Result<(), ()> {
+        unimplemented!()
+    }
+
+    /// Change this URL’s username.
+    ///
+    /// If this URL is non-relative or does not have a host, do nothing and return `Err`.
+    pub fn set_username(&mut self, username: &str) -> Result<(), ()> {
+        unimplemented!()
     }
 
     /// Change this URL’s scheme.
